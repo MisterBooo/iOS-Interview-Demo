@@ -61,11 +61,11 @@
 - (IBAction)setTargetQueue:(id)sender {
     
     NSLog(@"************指定优先级***********");
-    dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.MisterBooo.TestGCDDemo.www", DISPATCH_QUEUE_SERIAL);
+      dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.MisterBooo.TestGCDDemo.www", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t dispatchGetGlboalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
     // 第一个参数为要设置优先级的queue,第二个参数是参照物，既将第一个queue的优先级和第二个queue的优先级设置一样。
     dispatch_set_target_queue(serialDispatchQueue, dispatchGetGlboalQueue);
-    
+
     dispatch_async(serialDispatchQueue, ^{
         NSLog(@"低优先级喽");
     });
@@ -141,7 +141,31 @@
     
 }
 
+- (IBAction)testDispatchGroup:(id)sender {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"blk0");
+    });
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"blk1");
+    });
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"blk2");
+    });
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"blk3");
+    });
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSLog(@"done");
+    });
+    
+}
 
+
+#pragma mark - Private
 //在指定队列添加任务
 - (void)addQueue:(dispatch_queue_t )queue{
     dispatch_async(queue, ^{
