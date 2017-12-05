@@ -185,7 +185,13 @@
     
 }
 - (IBAction)testDispatchApply:(id)sender {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
+    dispatch_apply(30, queue, ^(size_t index) {
+        NSLog(@"index:%zu",index);
+    });
+    
+    NSLog(@"done");
 }
 
 #pragma mark - Private
