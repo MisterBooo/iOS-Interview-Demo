@@ -214,6 +214,25 @@
     }
 }
 
+- (IBAction)testDispatchSource:(id)sender {
+    ///定时器
+    
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    
+    dispatch_source_set_timer(timer, 5ull * NSEC_PER_SEC, DISPATCH_TIME_FOREVER, 1ull * NSEC_PER_SEC);
+    
+    dispatch_source_set_event_handler(timer, ^{
+        NSLog(@"wakeup");
+        dispatch_source_cancel(timer);
+    });
+    
+    dispatch_source_set_cancel_handler(timer, ^{
+        
+    });
+    
+    dispatch_resume(timer);
+}
+
 #pragma mark - Private
 //在指定队列添加任务
 - (void)addQueue:(dispatch_queue_t )queue{
