@@ -52,17 +52,6 @@
                                     <action selector="testBarrierSyncWithConCurrentQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FvF-em-MBX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsq-RF-bxu">
-                                <rect key="frame" x="190" y="248" width="90" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="7p9-Fs-wba"/>
-                                    <constraint firstAttribute="width" constant="90" id="q9B-qs-kmf"/>
-                                </constraints>
-                                <state key="normal" title="指定优先级"/>
-                                <connections>
-                                    <action selector="setTargetQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="adO-Kq-7fk"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTL-iC-yr3">
                                 <rect key="frame" x="53" y="334" width="90" height="63"/>
                                 <constraints>
@@ -74,15 +63,52 @@
                                     <action selector="testDispatchGroup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nd0-1D-5fj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QJ-A4-8Ua">
+                                <rect key="frame" x="190" y="334" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="Asq-ep-xnb"/>
+                                    <constraint firstAttribute="width" constant="90" id="XDR-qe-ObH"/>
+                                </constraints>
+                                <state key="normal" title="死锁"/>
+                                <connections>
+                                    <action selector="testSyncLock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DtN-dJ-ihP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsq-RF-bxu">
+                                <rect key="frame" x="190" y="248" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="7p9-Fs-wba"/>
+                                    <constraint firstAttribute="width" constant="90" id="q9B-qs-kmf"/>
+                                </constraints>
+                                <state key="normal" title="指定优先级"/>
+                                <connections>
+                                    <action selector="setTargetQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="adO-Kq-7fk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-2B-B6D">
+                                <rect key="frame" x="53" y="418" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="YDv-an-RAM"/>
+                                    <constraint firstAttribute="height" constant="63" id="u8v-F1-8Wy"/>
+                                </constraints>
+                                <state key="normal" title="Apply"/>
+                                <connections>
+                                    <action selector="testDispatchApply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGF-rk-ndc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rsq-RF-bxu" secondAttribute="trailing" constant="95" id="2e5-97-cGJ"/>
                             <constraint firstItem="WuA-PB-Dp6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="36G-Xt-KFL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oTL-iC-yr3" secondAttribute="bottom" constant="270" id="6R2-HX-bqb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4QJ-A4-8Ua" secondAttribute="bottom" constant="270" id="8FE-u2-pPu"/>
+                            <constraint firstItem="tvR-2B-B6D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="8O0-cS-DzW"/>
                             <constraint firstItem="oTL-iC-yr3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="8Yw-BY-Syu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WuA-PB-Dp6" secondAttribute="trailing" constant="95" id="EAL-vM-8mb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tvR-2B-B6D" secondAttribute="bottom" constant="186" id="TAX-Bp-lq7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rsq-RF-bxu" secondAttribute="bottom" constant="356" id="YMd-ax-pq3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4QJ-A4-8Ua" secondAttribute="trailing" constant="95" id="aCX-E6-ZKS"/>
                             <constraint firstItem="WuA-PB-Dp6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="sVL-9i-IB3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

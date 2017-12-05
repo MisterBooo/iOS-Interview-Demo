@@ -176,6 +176,17 @@
     
 }
 
+- (IBAction)testSyncLock:(id)sender {
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    //Thread 1: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)
+    dispatch_sync(queue, ^{
+        NSLog(@"不会执行的代码，打印不出来");
+    });
+    
+}
+- (IBAction)testDispatchApply:(id)sender {
+    
+}
 
 #pragma mark - Private
 //在指定队列添加任务
