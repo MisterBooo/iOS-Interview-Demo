@@ -155,12 +155,24 @@
         NSLog(@"blk2");
     });
     dispatch_group_async(group, queue, ^{
-        NSLog(@"blk3");
+        int sleepTime = arc4random_uniform(5);
+        sleep(sleepTime);
+        NSLog(@"blk3:休息了%d秒",sleepTime);
     });
     
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"done");
-    });
+//    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//        NSLog(@"done");
+//    });
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 2ull * NSEC_PER_SEC);
+    long result = dispatch_group_wait(group, time);
+    if (result == 0) {
+        //group的全部处理执行结束
+        NSLog(@"group的全部处理执行结束");
+    }else{
+        //group的某一个处理还在执行中
+        NSLog(@"等了2秒了，group的某一个处理还在执行中");
+
+    }
     
 }
 
