@@ -193,6 +193,26 @@
     
     NSLog(@"done");
 }
+- (IBAction)testSemaphore:(id)sender {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 10000; i++) {
+        dispatch_async(queue, ^{
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            [array addObject:[NSNumber numberWithInt:i]];
+            NSLog(@"i:%d",i);
+            
+            dispatch_semaphore_signal(semaphore);
+            
+        });
+    }
+}
 
 #pragma mark - Private
 //在指定队列添加任务
