@@ -18,48 +18,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-Ou-743">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-Ou-743">
                                 <rect key="frame" x="53" y="138" width="90" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="RaG-mw-4Tc"/>
-                                    <constraint firstAttribute="height" constant="63" id="fiN-ED-wIc"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="异步串行"/>
                                 <connections>
                                     <action selector="testAsyncWithSerialQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ipv-nW-zcY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltc-Si-4S3">
-                                <rect key="frame" x="190" y="138" width="90" height="63"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuA-PB-Dp6">
+                                <rect key="frame" x="53" y="44" width="227" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="9mm-Fl-fu9"/>
-                                    <constraint firstAttribute="height" constant="63" id="DqP-L6-f6Q"/>
+                                    <constraint firstAttribute="height" constant="51" id="RPL-Mz-w4a"/>
                                 </constraints>
+                                <state key="normal" title="获取各种Dispatch queue"/>
+                                <connections>
+                                    <action selector="printAllDispacth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B95-7r-hHp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltc-Si-4S3">
+                                <rect key="frame" x="190" y="138" width="90" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="异步并行"/>
                                 <connections>
                                     <action selector="testAsyncWithConCurrentQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bp0-pW-k9i"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-Yl-p7F">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-Yl-p7F">
                                 <rect key="frame" x="53" y="248" width="90" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="BnB-wg-Xl9"/>
-                                    <constraint firstAttribute="height" constant="63" id="Dbg-nS-HCS"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="异步栅栏"/>
                                 <connections>
                                     <action selector="testBarrierSyncWithConCurrentQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FvF-em-MBX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsq-RF-bxu">
+                                <rect key="frame" x="190" y="248" width="90" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="7p9-Fs-wba"/>
+                                    <constraint firstAttribute="width" constant="90" id="q9B-qs-kmf"/>
+                                </constraints>
+                                <state key="normal" title="指定优先级"/>
+                                <connections>
+                                    <action selector="setTargetQueue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="adO-Kq-7fk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZwF-Yl-p7F" firstAttribute="top" secondItem="Yp3-Ou-743" secondAttribute="bottom" constant="47" id="7qM-Gt-Ny0"/>
-                            <constraint firstItem="Yp3-Ou-743" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="9K3-s2-TB3"/>
-                            <constraint firstItem="Yp3-Ou-743" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="118" id="Ffm-8k-M8V"/>
-                            <constraint firstItem="ZwF-Yl-p7F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="Gr5-Pj-Llb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ltc-Si-4S3" secondAttribute="trailing" constant="95" id="b2X-7e-F1B"/>
-                            <constraint firstItem="Ltc-Si-4S3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="118" id="cWi-1I-ymU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rsq-RF-bxu" secondAttribute="trailing" constant="95" id="2e5-97-cGJ"/>
+                            <constraint firstItem="WuA-PB-Dp6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="36G-Xt-KFL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WuA-PB-Dp6" secondAttribute="trailing" constant="95" id="EAL-vM-8mb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rsq-RF-bxu" secondAttribute="bottom" constant="356" id="YMd-ax-pq3"/>
+                            <constraint firstItem="WuA-PB-Dp6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="53" id="sVL-9i-IB3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
