@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 
+typedef void(^Completion) (NSString *string);
+
 @interface ViewController (){
     dispatch_queue_t concurrent_queue;
     dispatch_queue_t serial_queue;
 }
+
+@property(nonatomic, copy) Completion completion;
 
 @end
 
@@ -61,7 +65,7 @@
 - (IBAction)setTargetQueue:(id)sender {
     
     NSLog(@"************指定优先级***********");
-      dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.MisterBooo.TestGCDDemo.www", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.MisterBooo.TestGCDDemo.www", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t dispatchGetGlboalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
     // 第一个参数为要设置优先级的queue,第二个参数是参照物，既将第一个queue的优先级和第二个queue的优先级设置一样。
     dispatch_set_target_queue(serialDispatchQueue, dispatchGetGlboalQueue);
@@ -215,6 +219,41 @@
 }
 
 - (IBAction)testDispatchSource:(id)sender {
+    
+
+    __block NSString *str = @"改变前str";
+    Completion _completion = ^(NSString *String){
+        NSLog(@"block里面的str:%@",str);
+        dispatch_sync(concurrent_queue, ^{
+            NSLog(@"同步concurrent_queue的str:%@",str);
+        });
+//        dispatch_sync(daispatch_get_main_queue(), ^{
+//            NSLog(@"同步主线程里面的str:%@",str);
+//        });
+        dispatch_async(concurrent_queue, ^{
+            NSLog(@"异步concurrent_queue的str:%@",str);
+        });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"异步主线程里面的str:%@",str);
+        });
+    };
+    str = @"block里面的";
+    _completion(@"_completion");
+    str = @"主线程里面的";
+//    dispatch_async(concurrent_queue, ^{
+//        sleep(2);
+//        str = @"concurrent_queue";
+//    });
+//
+
+       
+    
+   
+  
+    
+   
+    return;
+
     ///定时器
     
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
