@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -17,7 +18,76 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+//    [self.view addSubview:view];
+//    view.backgroundColor = [UIColor greenColor];
+//
+//    view.bounds = CGRectMake(0, 0, 300, 300);
+//
+//    NSLog(@"view.frame:%@,view.bounds:%@",NSStringFromCGRect(view.frame),NSStringFromCGRect(view.bounds));
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    
+    
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"numberOfSectionsInTableView");
+    return 1  ;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"numberOfRowsInSection");
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    NSLog(@"heightForHeaderInSection");
+    return 22;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    NSLog(@"heightForFooterInSection");
+    return 22;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"heightForRowAtIndexPath");
+    return 44;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 100, 10)];
+    headerView.backgroundColor = [UIColor orangeColor];
+    NSLog(@"viewForHeaderInSection");
+    return headerView;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 100, 10)];
+    headerView.backgroundColor = [UIColor redColor];
+    NSLog(@"viewForFooterInSection");
+    return headerView;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    cell.textLabel.text = @"textLabel";
+    cell.contentView.backgroundColor = [UIColor greenColor];
+    NSLog(@"cellForRowAtIndexPath");
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 
 - (IBAction)testSynchronized:(id)sender {
     NSObject *obj = [[NSObject alloc] init];
