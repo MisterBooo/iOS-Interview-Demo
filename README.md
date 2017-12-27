@@ -10,3 +10,4 @@ iOS面试题相关demo
 ## Copy
 
 ## Autorelease
+[黑幕背后的Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
