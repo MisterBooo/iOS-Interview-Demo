@@ -64,6 +64,8 @@ typedef void(^Completion) (NSString *string);
 //指定优先级
 - (IBAction)setTargetQueue:(id)sender {
     
+    
+    
     NSLog(@"************指定优先级***********");
     dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.MisterBooo.TestGCDDemo.www", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t dispatchGetGlboalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
